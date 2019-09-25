@@ -8,5 +8,13 @@ namespace PaperRockScissorsLizardSpock
 {
     class Player
     {
+        //memb var
+        public SelectedGesture[] = new Gesture[1];
+        
+        //constr
+
+
+        //memb methods
+        //select gesture
     }
 }

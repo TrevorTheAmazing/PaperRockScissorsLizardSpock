@@ -8,14 +8,18 @@ namespace PaperRockScissorsLizardSpock.ClassFiles
 {
     class Gesture
     {
-        public string[] GestureArray = ["Paper", "Rock", "Scissors", "Lizard", "Spock"];
+        //memb var
+        public string[] Gesture = ["Paper", "Rock", "Scissors", "Lizard", "Spock"];
 
+        //constr
         public Gesture()
         {
             this.GestureArray = GestureArray;
 
 
         }
+
+        //memb methods
     }
 
 }
