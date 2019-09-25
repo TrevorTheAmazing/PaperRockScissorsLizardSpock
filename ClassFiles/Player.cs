@@ -11,9 +11,10 @@ namespace PaperRockScissorsLizardSpock
         //memb var
         public string Name;
         public bool IsHuman;
-        public int SelectedGesture;
-        
-        
+        //public int SelectedGesture;
+        public string SelectedGesture;
+
+
         //constr
         public Player(string Name, bool IsHuman)
         {
@@ -24,5 +25,10 @@ namespace PaperRockScissorsLizardSpock
 
         //memb methods
         //select gesture
+        public void SelectGesture()
+        {
+            //prompt for the player's selected gesture
+            //assign selected gesture input to Player.SelectedGesture
+        }
     }
 }

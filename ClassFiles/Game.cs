@@ -9,7 +9,8 @@ namespace PaperRockScissorsLizardSpock
     class Game
     {
         //mem var
-        public Player[] Players = new Player[2];
+        //public Player[] Players = new Player[2];
+        public List<Player> Players = new List<Player>();
         public string[] GesturesArray;
         public Random rng;
         public bool GameIsSetUp;
@@ -20,6 +21,9 @@ namespace PaperRockScissorsLizardSpock
         public bool SetupGame()
         {
             //players setup
+            //get ishUman
+            //get name
+            //add to Players list
 
             //display the rules
             DisplayRules();
