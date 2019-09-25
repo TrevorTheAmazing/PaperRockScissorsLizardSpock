@@ -9,20 +9,44 @@ namespace PaperRockScissorsLizardSpock
     class Game
     {
         //mem var
-        public Player[] Players = [Player1, Player2];
-        public string[] GesturesArray = ["Paper", "Rock", "Scissors", "Lizard", "Spock"];
+        public Player[] Players = new Player[2];
+        public string[] GesturesArray;
         public Random rng;
+        public bool GameIsSetUp;
 
         //constr
 
         //mem methods
+        public bool SetupGame()
+        {
+            //players setup
+
+            //display the rules
+            DisplayRules();
+
+            //report "ready to play"
+            return true;
+        }
+
         public void RunGame()
         {
-            //displayrules
-            //single 'round'
             //one 'game' instance should have at least 3 rounds
+            //loop at least 3 rounds
+
             //tiebreaker round
             //display winner
+            AnnounceWinner();
         }
+        
+        public void DisplayRules()
+        {
+            Console.WriteLine("now in DisplayRules()");
+        }
+
+        public void AnnounceWinner()
+        {
+
+        }
+    
     }
 }

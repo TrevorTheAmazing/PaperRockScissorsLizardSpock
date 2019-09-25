@@ -9,9 +9,17 @@ namespace PaperRockScissorsLizardSpock
     class Player
     {
         //memb var
-        public SelectedGesture[] = new Gesture[1];
+        public string Name;
+        public bool IsHuman;
+        public int SelectedGesture;
+        
         
         //constr
+        public Player(string Name, bool IsHuman)
+        {
+            this.Name = Name;
+            this.IsHuman = true;
+        }
 
 
         //memb methods

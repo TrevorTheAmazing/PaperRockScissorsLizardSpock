@@ -10,6 +10,16 @@ namespace PaperRockScissorsLizardSpock
     {
         static void Main(string[] args)
         {
+            Game PaperRockScissorsLizardSpock = new Game();//params should be player names, and the isHuman value selection
+            do
+            {
+                PaperRockScissorsLizardSpock.SetupGame();
+            } while (!PaperRockScissorsLizardSpock.GameIsSetUp);
+            if (PaperRockScissorsLizardSpock.GameIsSetUp)
+            {
+                PaperRockScissorsLizardSpock.RunGame();
+            }            
+            Console.ReadLine();
         }
     }
 }
