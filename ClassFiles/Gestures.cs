@@ -10,20 +10,20 @@ namespace PaperRockScissorsLizardSpock.ClassFiles
     {
         //memb var
         //public string[] GesturesArray = { "Paper", "Rock", "Scissors", "Lizard", "Spock" };
-        public List<string> GesturesList = new List<string>(){ "Paper", "Rock", "Scissors", "Lizard", "Spock" };
+        //public List<string> GesturesList = new List<string>(){ "Paper", "Rock", "Scissors", "Lizard", "Spock" };
 
         //constr
         public Gestures()
         {
-            this.GesturesList = GesturesList;
+            //this.GesturesList = GesturesList;
         }
 
         //memb methods
         //display gestures
-        public void DisplayGestures()
-        {
-            Console.WriteLine("now in DisplayGestures");
-        }
+        //public void DisplayGestures()
+        //{
+        //    Console.WriteLine("now in DisplayGestures");
+        //}
     }
 
 }

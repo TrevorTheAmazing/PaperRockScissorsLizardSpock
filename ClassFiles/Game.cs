@@ -9,9 +9,8 @@ namespace PaperRockScissorsLizardSpock
     class Game
     {
         //mem var
-        //public Player[] Players = new Player[2];
         public List<Player> Players = new List<Player>();
-        public string[] GesturesArray;
+        public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };
         public Random rng;
         public bool GameIsSetUp;
 
@@ -21,10 +20,19 @@ namespace PaperRockScissorsLizardSpock
         public bool SetupGame()
         {
             //players setup
-
             //get ishUman
+            bool TempIsHuman = GetUserInput("Is this player a human? /n 1 = 'Yes' /n 0 = 'No'", "bool");
+            
             //get name
+            if (TempIsHuman)
+            {
+                Console.WriteLine("What is this human player's name?");
+                string TempName = Console.ReadLine();
+            }
+            //instantiate Player
             //add to Players list
+            Player Player1 = new Human(TempName/*, IsHuman*/);
+            //Players.add();
 
             //display the rules
             DisplayRules();
@@ -53,31 +61,41 @@ namespace PaperRockScissorsLizardSpock
             Console.WriteLine("The winner is:");
         }
 
-        public string promptFor(string question, bool valid)
+        public bool GetUserInput(string message, string ValidationType)
         {
-            string response = "";
-            do
+            Console.WriteLine(message);
+            switch (ValidationType)
             {
-                Console.WriteLine(question);
-                response = Console.ReadLine();
-                //while ((response != "") || (valid(response));
-            } while (response != "");
-            return response;
+                case "int":
+                    //return ValidInt(int.Parse(Console.ReadLine()));
+                    return ValidInt(Console.ReadLine());
+                default:
+                    return false;
+            }
+            //int input = int.Parse(Console.ReadLine());
+            //if (input == 0)
+            //{
+            //    return false;
+            //}
+            //else if (input == 1)
+            //{
+            //    return true;
+            //} 
+            //else
+            //{
+            //    return false;
+            //}
         }
 
-        public bool yesNo(string input)
-        {
-            return (input.ToLower() == "yes") || (input.ToLower() == "no");
-        }
-
-        public bool chars(string input)
+        //public bool ValidInt(int Input)
+        public bool ValidInt(string Input)
         {
             bool tempResult = true;
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < Input.Length; i++)
             {
-                foreach (char asciiChar in input.ToCharArray())
-                { 
-                    if (!(asciiChar > 96 && asciiChar < 122))
+                foreach (char asciiChar in Input.ToCharArray())
+                {
+                    if (!(asciiChar > 47 && asciiChar < 58))
                     {
                         tempResult = false;
                         break;
@@ -87,21 +105,28 @@ namespace PaperRockScissorsLizardSpock
             return tempResult;
         }
 
-        public bool nums(string input)
+        public class Human : Player
         {
-            bool tempResult = true;
-            for (int i = 0; i < input.Length; i++)
+            public Human(string Name):base(Name)
             {
-                foreach (char asciiChar in input.ToCharArray())
-                {
-                    if (!(asciiChar > 47 && asciiChar < 58))
-                    {
-                        tempResult = false;
-                        break;
-                    }
-                }                
+                this.Name = Name;
             }
-            return tempResult;
+            public override void SelectGesture()
+            {
+                SelectedGesture = 3;
+            }
         }
-    }
-}
+
+        public class Computer : Player
+        {
+            public Computer(string Name):base(Name)
+            {
+                this.Name = Name;
+            }
+            public override void SelectGesture()
+            {
+                SelectedGesture = 3;
+            }
+        }
+    }// end Game class
+}// end Namespace
