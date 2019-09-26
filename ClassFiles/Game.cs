@@ -30,8 +30,9 @@ namespace PaperRockScissorsLizardSpock
                 string TempName = Console.ReadLine();
             }
             //instantiate Player
-            //add to Players list
             Player Player1 = new Human(TempName/*, IsHuman*/);
+
+            //add to Players list
             //Players.add();
 
             //display the rules
@@ -72,22 +73,8 @@ namespace PaperRockScissorsLizardSpock
                 default:
                     return false;
             }
-            //int input = int.Parse(Console.ReadLine());
-            //if (input == 0)
-            //{
-            //    return false;
-            //}
-            //else if (input == 1)
-            //{
-            //    return true;
-            //} 
-            //else
-            //{
-            //    return false;
-            //}
         }
 
-        //public bool ValidInt(int Input)
         public bool ValidInt(string Input)
         {
             bool tempResult = true;
