@@ -146,6 +146,20 @@ namespace PaperRockScissorsLizardSpock
         }
 
         public bool ValidBool(string Input)
-
+        {
+            bool tempResult = true;
+            for (int i = 0; i < Input.Length; i++)
+            {
+                foreach (char asciiChar in Input.ToCharArray())
+                {
+                    if (!(asciiChar > 47 && asciiChar < 50))
+                    {
+                        tempResult = false;
+                        break;
+                    }
+                }
+            }
+            return tempResult;
+        }
     }// end Game class
 }// end Namespace
