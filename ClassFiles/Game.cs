@@ -115,42 +115,5 @@ namespace PaperRockScissorsLizardSpock
             return tempResult;
         }
 
-        public class Human : Player
-        {
-            public Human(/*string Name*/)// : base(Name)
-            {
-                //this.Name = Name;
-                this.Name = SetPlayerName();
-            }
-
-            public override string SetPlayerName()
-            {
-                Console.WriteLine("What is this human player's name?");
-                string TempName = Console.ReadLine();
-                return TempName;
-            }
-            public override void SelectGesture()
-            {
-                SelectedGesture = 3;
-            }
-        }
-
-        public class Computer : Player
-        {
-            public Computer(/*string Name*/)//:base(Name)
-            {
-                //this.Name = Name;
-                this.Name = SetPlayerName();
-            }
-            public override string SetPlayerName()
-            {
-                return "Computer Player";
-            }
-            public override void SelectGesture()
-            {
-                SelectedGesture = 3;
-            }
-        }
-
     }// end Game class
 }// end Namespace
