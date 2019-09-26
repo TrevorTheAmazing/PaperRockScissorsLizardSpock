@@ -10,7 +10,7 @@ namespace PaperRockScissorsLizardSpock
     {
         static void Main(string[] args)
         {
-            Game PaperRockScissorsLizardSpock = new Game();//params should be player names, and the isHuman value selection
+            Game PaperRockScissorsLizardSpock = new Game();
             do
             {
                 PaperRockScissorsLizardSpock.SetupGame();

@@ -16,16 +16,18 @@ namespace PaperRockScissorsLizardSpock
         public int Score;
 
         //constr
-        public Player(string Name, bool IsHuman = false)
+        //public Player(string Name, bool IsHuman = false)
+        public Player()
         {
-            this.Name = Name;
-            this.IsHuman = IsHuman;
+            /*this.Name = Name;
+            this.IsHuman = IsHuman;*/
             this.SelectedGesture = 0;
             this.Score = 0;
         }
 
         //memb methods
         //select gesture
+        public abstract string SetPlayerName();
         public abstract void SelectGesture();
         //{
             //prompt for the player's selected gesture

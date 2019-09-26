@@ -1,1 +1,6 @@
 C:\Users\trevo\Dropbox\dcc\12 - PaperRockScissorsLizardSpock\PaperRockScissorsLizardSpock\obj\Debug\PaperRockScissorsLizardSpock.csprojAssemblyReference.cache
+C:\Users\trevo\Dropbox\dcc\12 - PaperRockScissorsLizardSpock\PaperRockScissorsLizardSpock\bin\Debug\PaperRockScissorsLizardSpock.exe.config
+C:\Users\trevo\Dropbox\dcc\12 - PaperRockScissorsLizardSpock\PaperRockScissorsLizardSpock\bin\Debug\PaperRockScissorsLizardSpock.exe
+C:\Users\trevo\Dropbox\dcc\12 - PaperRockScissorsLizardSpock\PaperRockScissorsLizardSpock\bin\Debug\PaperRockScissorsLizardSpock.pdb
+C:\Users\trevo\Dropbox\dcc\12 - PaperRockScissorsLizardSpock\PaperRockScissorsLizardSpock\obj\Debug\PaperRockScissorsLizardSpock.exe
+C:\Users\trevo\Dropbox\dcc\12 - PaperRockScissorsLizardSpock\PaperRockScissorsLizardSpock\obj\Debug\PaperRockScissorsLizardSpock.pdb

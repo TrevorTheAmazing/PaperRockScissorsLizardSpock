@@ -13,37 +13,60 @@ namespace PaperRockScissorsLizardSpock
         public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };
         public Random rng;
         public bool GameIsSetUp;
+        public Player Player1;
+        public Player Player2;
 
         //constr
 
         //mem methods
         public bool SetupGame()
         {
-            //players setup
-            //get ishUman
-            bool TempIsHuman = GetUserInput("Is this player a human? /n 1 = 'Yes' /n 0 = 'No'", "bool");
-            
-            //get name
-            if (TempIsHuman)
-            {
-                Console.WriteLine("What is this human player's name?");
-                string TempName = Console.ReadLine();
-            }
-            //instantiate Player
-            Player Player1 = new Human(TempName/*, IsHuman*/);
-
-            //add to Players list
-            //Players.add();
-
             //display the rules
             DisplayRules();
 
+            for (var i = 0; i <= 1; i++)
+            {
+                bool TempIsHuman;
+                Console.WriteLine("Setting up player " + (i+1).ToString() + ".");
+                if (i==0)
+                {
+                    TempIsHuman = true;//GetUserInput("Is this player a human? /n 1 = 'Yes' /n 0 = 'No'", "bool");
+                    //Player1 = SetupHumanPlayer();
+                    Player1 = new Human();
+                    Players.Add(Player1);
+                }
+                else if (i==1)
+                {
+                    TempIsHuman = false;
+                    //Player2 = SetupComputerPlayer();
+                    Player2 = new Computer();
+                    Players.Add(Player2);
+                }
+                
+               //Players.Add(new Player());//!//
+            }
+
             //report "ready to play"
-            return true;
+            if (Players.Count == 2)
+            {
+                GameIsSetUp = true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public void RunGame()
         {
+            for (int i = 0; i< Players.Count; i++)
+            {
+                Console.WriteLine("Player " + (i+1).ToString() + " = " + Players[i].Name);
+            }
+            Console.WriteLine("yay BEGIN GAME NOW");
+            Console.ReadLine();
             //one 'game' instance should have at least 3 rounds
             //loop at least 3 rounds
 
@@ -94,9 +117,17 @@ namespace PaperRockScissorsLizardSpock
 
         public class Human : Player
         {
-            public Human(string Name):base(Name)
+            public Human(/*string Name*/)// : base(Name)
             {
-                this.Name = Name;
+                //this.Name = Name;
+                this.Name = SetPlayerName();
+            }
+
+            public override string SetPlayerName()
+            {
+                Console.WriteLine("What is this human player's name?");
+                string TempName = Console.ReadLine();
+                return TempName;
             }
             public override void SelectGesture()
             {
@@ -106,14 +137,20 @@ namespace PaperRockScissorsLizardSpock
 
         public class Computer : Player
         {
-            public Computer(string Name):base(Name)
+            public Computer(/*string Name*/)//:base(Name)
             {
-                this.Name = Name;
+                //this.Name = Name;
+                this.Name = SetPlayerName();
+            }
+            public override string SetPlayerName()
+            {
+                return "Computer Player";
             }
             public override void SelectGesture()
             {
                 SelectedGesture = 3;
             }
         }
+
     }// end Game class
 }// end Namespace
