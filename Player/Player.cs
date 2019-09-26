@@ -9,14 +9,12 @@ namespace PaperRockScissorsLizardSpock
     public abstract class Player
     {
         //memb var
-        //"can't abstract fields"
         public string Name;
         public bool IsHuman;
         public int SelectedGesture;
         public int Score;
 
         //constr
-        //public Player(string Name, bool IsHuman = false)
         public Player()
         {
             /*this.Name = Name;

@@ -18,8 +18,7 @@ namespace PaperRockScissorsLizardSpock
         public override string SetPlayerName()
         {
             Console.WriteLine("What is this human player's name?");
-            string TempName = Console.ReadLine();
-            return TempName;
+            return Console.ReadLine();
         }
         public override void SelectGesture()
         {

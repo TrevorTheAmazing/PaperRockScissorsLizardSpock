@@ -19,31 +19,39 @@ namespace PaperRockScissorsLizardSpock
         //constr
 
         //mem methods
-        public bool SetupGame()
+        public bool SetupGame()//START WORKING HERE!
         {
             //display the rules
             DisplayRules();
 
             for (var i = 0; i <= 1; i++)
             {
-                bool TempIsHuman;
+                //bool TempIsHuman;
                 Console.WriteLine("Setting up player " + (i+1).ToString() + ".");
-                if (i==0)
+                
+                
+                //GetUserInput("Is this player a human? /n 1 = 'Yes' /n 0 = 'No'", "bool");
+                //GetUserInput("Is this player a human?" + /n + "1 = 'Yes'" + /n + "0 = 'No'", "bool");
+                //Console.WriteLine("Is this player a human?");
+                //Console.WriteLine("1 = 'Yes'");
+                //Console.WriteLine("0 = 'No'");
+                //string tempInput = Console.ReadLine();
+                //GetUserInput(tempInput, "bool");
+
+                if (GetUserInput("Is this player a human?" + Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'", "bool"))
                 {
-                    TempIsHuman = true;//GetUserInput("Is this player a human? /n 1 = 'Yes' /n 0 = 'No'", "bool");
+                    //TempIsHuman = true;
                     //Player1 = SetupHumanPlayer();
                     Player1 = new Human();
                     Players.Add(Player1);
                 }
-                else if (i==1)
+                else
                 {
-                    TempIsHuman = false;
-                    //Player2 = SetupComputerPlayer();
-                    Player2 = new Computer();
-                    Players.Add(Player2);
-                }
-                
-               //Players.Add(new Player());//!//
+                //TempIsHuman = false;
+                //Player2 = SetupComputerPlayer();
+                Player2 = new Computer();
+                Players.Add(Player2);
+                }                          
             }
 
             //report "ready to play"
@@ -93,9 +101,31 @@ namespace PaperRockScissorsLizardSpock
                 case "int":
                     //return ValidInt(int.Parse(Console.ReadLine()));
                     return ValidInt(Console.ReadLine());
+                case "bool":
+                    return ValidBool(Console.ReadLine());
+                case "str":
+                    return ValidStr(Console.ReadLine());
                 default:
                     return false;
             }
+        }
+
+        public bool ValidStr(string Input)
+        {
+            string tempString = Input.ToLower();
+            bool tempResult = true;
+            for (int i = 0; i < Input.Length; i++)
+            {
+                foreach (char asciiChar in Input.ToCharArray())
+                {
+                    if (!(asciiChar > 96 && asciiChar < 123))
+                    {
+                        tempResult = false;
+                        break;
+                    }
+                }
+            }
+            return tempResult;
         }
 
         public bool ValidInt(string Input)
@@ -114,6 +144,8 @@ namespace PaperRockScissorsLizardSpock
             }
             return tempResult;
         }
+
+        public bool ValidBool(string Input)
 
     }// end Game class
 }// end Namespace
