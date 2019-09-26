@@ -21,6 +21,7 @@ namespace PaperRockScissorsLizardSpock
         public bool SetupGame()
         {
             //players setup
+
             //get ishUman
             //get name
             //add to Players list
@@ -49,8 +50,58 @@ namespace PaperRockScissorsLizardSpock
 
         public void AnnounceWinner()
         {
-
+            Console.WriteLine("The winner is:");
         }
-    
+
+        public string promptFor(string question, bool valid)
+        {
+            string response = "";
+            do
+            {
+                Console.WriteLine(question);
+                response = Console.ReadLine();
+                //while ((response != "") || (valid(response));
+            } while (response != "");
+            return response;
+        }
+
+        public bool yesNo(string input)
+        {
+            return (input.ToLower() == "yes") || (input.ToLower() == "no");
+        }
+
+        public bool chars(string input)
+        {
+            bool tempResult = true;
+            for (int i = 0; i < input.Length; i++)
+            {
+                foreach (char asciiChar in input.ToCharArray())
+                { 
+                    if (!(asciiChar > 96 && asciiChar < 122))
+                    {
+                        tempResult = false;
+                        break;
+                    }
+                }
+            }
+            return tempResult;
+        }
+
+        public bool nums(string input)
+        {
+            bool tempResult = true;
+            for (int i = 0; i < input.Length; i++)
+            {
+                foreach (char asciiChar in input.ToCharArray())
+                {
+                    if (!(asciiChar > 47 && asciiChar < 58))
+                    {
+                        tempResult = false;
+                        break;
+                    }
+                }                
+            }
+            return tempResult;
+        }
     }
 }
