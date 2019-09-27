@@ -28,15 +28,6 @@ namespace PaperRockScissorsLizardSpock
             {
                 //bool TempIsHuman;
                 Console.WriteLine("Setting up player " + (i+1).ToString() + ".");
-                
-                
-                //GetUserInput("Is this player a human? /n 1 = 'Yes' /n 0 = 'No'", "bool");
-                //GetUserInput("Is this player a human?" + /n + "1 = 'Yes'" + /n + "0 = 'No'", "bool");
-                //Console.WriteLine("Is this player a human?");
-                //Console.WriteLine("1 = 'Yes'");
-                //Console.WriteLine("0 = 'No'");
-                //string tempInput = Console.ReadLine();
-                //GetUserInput(tempInput, "bool");
 
                 if (GetUserInput("Is this player a human?" + Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'", "bool"))
                 {
@@ -85,7 +76,15 @@ namespace PaperRockScissorsLizardSpock
         
         public void DisplayRules()
         {
-            Console.WriteLine("now in DisplayRules()");
+            Console.WriteLine(
+                "Scissors cuts Paper," + Environment.NewLine + "Paper covers Rock," + Environment.NewLine +
+                "Rock crushes Lizard," + Environment.NewLine + "Lizard poisons Spock," + Environment.NewLine +
+                "Spock smashes Scissors," + Environment.NewLine + "Scissors decapitates Lizard," + Environment.NewLine +
+                "Lizard eats Paper," + Environment.NewLine + "Paper disproves Spock," + Environment.NewLine +
+                "Spock vaporizes Rock." + Environment.NewLine + "And as it always has ..." + Environment.NewLine +
+                Environment.NewLine + "... Rock crushes Scissors.");
+            Console.WriteLine("https://www.youtube.com/watch?v=cSLeBKT7-sM");
+
         }
 
         public void AnnounceWinner()

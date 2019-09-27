@@ -24,3 +24,5 @@ Paper disproves Spock
 Spock vaporizes Rock 
 
 https://www.youtube.com/watch?v=cSLeBKT7-sM
+
+TODO - *maybe overload getuserinput to optionally take a third string VARIABLE (value? reference?) to get the actual user input back?
