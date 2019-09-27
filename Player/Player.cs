@@ -23,7 +23,7 @@ namespace PaperRockScissorsLizardSpock
         //memb methods
         //select gesture
         public abstract string SetPlayerName();
-        public abstract void SelectGesture();
+        public abstract void SelectGesture(List<string> GesturesList);
 
     }
 }

@@ -10,7 +10,9 @@ namespace PaperRockScissorsLizardSpock
     class Human : Player
     {
         bool nameIsSet;
+        bool gestureIsSet;
         string tempStr;
+        string tempGesture;
 
         public Human()
         {
@@ -63,13 +65,68 @@ namespace PaperRockScissorsLizardSpock
             return tempStr;
         }//end Human.SetPlayerName()
 
-        public override void SelectGesture()
+        public override void SelectGesture(List<string> GesturesList)
         {
-            //prompt for the player's selected gesture
+            
+            bool ValidInt(string Input)
+            {
+                bool tempResult = true;
+                for (int i = 0; i < Input.Length; i++)
+                {
+                    foreach (char asciiChar in Input.ToCharArray())
+                    {
+                        if (!(asciiChar > 47 && asciiChar < 58))
+                        {
+                            tempResult = false;
+                            return tempResult;
+                        }
+                    }
+                }
+                if (tempResult)
+                {
+                    try
+                    {
+                        if ((Int32.Parse(Input)) < (GesturesList.Count))
+                        {
+                            gestureIsSet = true;
+                            return gestureIsSet;
+                        }
+                    }
+                    catch
+                    {
+                        SelectGesture(GesturesList);
+                    }
+
+                }
+                return tempResult;
+            }
+
+            do
+            {
+                gestureIsSet = false;
+                Console.WriteLine(this.Name + ", select a gesture:");
+                tempGesture = Console.ReadLine();
+                ValidInt(tempGesture);
+            } while (!gestureIsSet);
+
             //assign selected gesture input to Player.SelectedGesture
-            //loop through the players, add their selects to an array
-            //pass the array to Gestures.CompareGestures
-            SelectedGesture = 3;
+            if (gestureIsSet)
+            {
+                try
+                {
+                    this.SelectedGesture = (Int32.Parse(tempGesture));
+                }
+                catch
+                {
+                    SelectGesture(GesturesList);
+                }
+                
+            }
+            else
+            {
+                SelectGesture(GesturesList);
+            }
         }
     }
 }
+ 

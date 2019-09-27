@@ -22,13 +22,12 @@ namespace PaperRockScissorsLizardSpock
             return CpuPlayersList[random.Next(0, CpuPlayersList.Count)];
         }
 
-        public override void SelectGesture()
+        public override void SelectGesture(List<string> GesturesList)
         {
+            Random random = new Random();
             //prompt for the player's selected gesture
             //assign selected gesture input to Player.SelectedGesture
-            //loop through the players, add their selects to an array
-            //pass the array to Gestures.CompareGestures
-            SelectedGesture = 3;
+            this.SelectedGesture = (random.Next(0, GesturesList.Count));           
         }
     }
 }

@@ -196,11 +196,28 @@ namespace PaperRockScissorsLizardSpock
 
         public void BeginGame()
         {
-            //one 'game' instance should have at least 3 rounds
-            //loop at least 3 rounds
+            //one 'game' instance should have at least 3 rounds            
             do
             {
-                //game stuff
+                //display the gesture options
+                for (int j = 0; j < GesturesList.Count; j++)
+                {
+                    Console.WriteLine(j + " - " + GesturesList[j]);
+                }
+
+                //prompt each player for their throw
+                for (int i = 0; i < Players.Count; i++)
+                {
+                    Console.WriteLine("Player " + i + ", it is your turn to throw down!");
+                    //prompt the player for their selection                        
+                    Players[i].SelectGesture(GesturesList);
+                }
+
+                //compare their selections
+                //determine the round winner
+                //Player roundWinner = 
+                //increment the winner's score
+
             } while (!WinningScoreExists());
         }
 

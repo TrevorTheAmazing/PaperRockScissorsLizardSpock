@@ -13,10 +13,10 @@ namespace PaperRockScissorsLizardSpock.ClassFiles
         //public List<string> GesturesList = new List<string>(){ "Paper", "Rock", "Scissors", "Lizard", "Spock" };
 
         //constr
-        public Gestures()
-        {
-            //this.GesturesList = GesturesList;
-        }
+        //public Gestures()
+        //{
+        //    //this.GesturesList = GesturesList;
+        //}
 
         //memb methods
         //display gestures
