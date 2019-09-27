@@ -10,7 +10,8 @@ namespace PaperRockScissorsLizardSpock
     {
         //mem var
         public List<Player> Players = new List<Player>();
-        public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };
+        //public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };       
+        public List<string> GesturesList = new List<string>() { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
         public bool GameIsSetUp;
         int requiredNumberOfPlayers = 2;
         Player tempPlayer;
@@ -67,9 +68,6 @@ namespace PaperRockScissorsLizardSpock
 
             BeginGame();
 
-
-            //tiebreaker round
-            //display winner
             AnnounceWinner();
         }
         
@@ -242,7 +240,7 @@ namespace PaperRockScissorsLizardSpock
             Player Player1 = Players[0];
             Player Player2 = Players[1];
 
-            int tempDescision = ((GesturesList.Count + (Player1.SelectedGesture - Player2.SelectedGesture)) % GesturesList.Count);
+            int tempDescision = ((GesturesList.Count + Player1.SelectedGesture - Player2.SelectedGesture) % GesturesList.Count);
 
             if (tempDescision==0)
             {
@@ -250,7 +248,10 @@ namespace PaperRockScissorsLizardSpock
             }
             else if ((tempDescision % 2) == 1)
             {
+                Console.Clear();
+                DisplayRules();
                 Console.WriteLine(Player1.Name + " wins the round!");
+                Console.WriteLine();
                 Player1.Score++;
                 Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
                 Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
@@ -259,7 +260,10 @@ namespace PaperRockScissorsLizardSpock
             }
             else if ((tempDescision % 2) == 0)
             {
+                Console.Clear();
+                DisplayRules();
                 Console.WriteLine(Player2.Name + " wins the round!");
+                Console.WriteLine();
                 Player2.Score++;
                 Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
                 Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
@@ -269,6 +273,7 @@ namespace PaperRockScissorsLizardSpock
             else
             {
                 Console.WriteLine("3rr0r");
+                Console.ReadLine();
             }
 
             //Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
