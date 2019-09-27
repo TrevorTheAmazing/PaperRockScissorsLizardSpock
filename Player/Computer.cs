@@ -8,18 +8,24 @@ namespace PaperRockScissorsLizardSpock
 {
     public class Computer : Player
     {
-        public Computer(/*string Name*/)//:base(Name)
+        public Computer()
         {
             //this.Name = Name;
             this.Name = SetPlayerName();
         }
-        public override string SetPlayerName()
-        {
-            return "Computer Player";
-        }
+
+
         public override void SelectGesture()
         {
             SelectedGesture = 3;
+        }
+
+        public override string SetPlayerName()
+        {
+            List<string> CpuPlayersList = new List<string>() { "T-100", "HAL-3000", "OMM-0000", "ED-209" };
+            Random random = new Random();
+
+            return CpuPlayersList[random.Next(0, CpuPlayersList.Count)];
         }
     }
 }
