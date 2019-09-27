@@ -10,15 +10,12 @@ namespace PaperRockScissorsLizardSpock
     {
         //memb var
         public string Name;
-        public bool IsHuman;
         public int SelectedGesture;
         public int Score;
 
         //constr
         public Player()
         {
-            /*this.Name = Name;
-            this.IsHuman = IsHuman;*/
             this.SelectedGesture = 0;
             this.Score = 0;
         }
@@ -27,11 +24,6 @@ namespace PaperRockScissorsLizardSpock
         //select gesture
         public abstract string SetPlayerName();
         public abstract void SelectGesture();
-        //{
-            //prompt for the player's selected gesture
-            //assign selected gesture input to Player.SelectedGesture
-            //loop through the players, add their selects to an array
-            //pass the array to Gestures.CompareGestures
-        //}
+
     }
 }

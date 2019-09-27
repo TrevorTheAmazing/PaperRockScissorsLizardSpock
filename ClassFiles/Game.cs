@@ -13,37 +13,37 @@ namespace PaperRockScissorsLizardSpock
         public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };
         public Random rng;
         public bool GameIsSetUp;
-        public Player Player1;
-        public Player Player2;
+        int requiredNumberOfPlayers = 2;
+        Player tempPlayer;
 
         //constr
 
         //mem methods
-        public bool SetupGame()//START WORKING HERE!
+        public bool SetupGame()
         {
+            
             //display the rules
             DisplayRules();
-            if (GetUserInput("Would you like to play?", "bool"))
+            if (GetUserInput("Would you like to play?", "bool")=="1")
                 {
-                for (var i = 0; i <= 1; i++)
+                while (Players.Count < requiredNumberOfPlayers)
                 {
-                    //bool TempIsHuman;
-                    Console.WriteLine("Setting up player " + (i + 1).ToString() + ".");
-
-                    if (GetUserInput("Is this player a human?", "bool"))
+                    //string tempPlayer = "";
+                    if (GetUserInput("Is this player a human?", "bool")=="1")
                     {
-                        Player1 = new Human();
-                        Players.Add(Player1);
+                        tempPlayer = new Human();                        
                     }
                     else
                     {
-                        Player2 = new Computer();
-                        Players.Add(Player2);
+                        tempPlayer = new Computer();
                     }
+                    Players.Add(tempPlayer);
                 }
             }
-
-
+            else
+            {
+                RunGame();
+            }
 
             //indicate game is "ready to play"
             if (Players.Count == 2)
@@ -64,10 +64,9 @@ namespace PaperRockScissorsLizardSpock
             {
                 Console.WriteLine("Player " + (i+1).ToString() + " = " + Players[i].Name);
             }
-            Console.WriteLine("yay BEGIN GAME NOW");
-            Console.ReadLine();
-            //one 'game' instance should have at least 3 rounds
-            //loop at least 3 rounds
+
+            BeginGame();
+
 
             //tiebreaker round
             //display winner
@@ -82,8 +81,7 @@ namespace PaperRockScissorsLizardSpock
                 "Spock smashes Scissors," + Environment.NewLine + "Scissors decapitates Lizard," + Environment.NewLine +
                 "Lizard eats Paper," + Environment.NewLine + "Paper disproves Spock," + Environment.NewLine +
                 "Spock vaporizes Rock." + Environment.NewLine + "And as it always has ..." + Environment.NewLine +
-                Environment.NewLine + "... Rock crushes Scissors.");
-            Console.WriteLine("https://www.youtube.com/watch?v=cSLeBKT7-sM");
+                Environment.NewLine + "... Rock crushes Scissors." + Environment.NewLine + Environment.NewLine);
 
         }
 
@@ -92,34 +90,55 @@ namespace PaperRockScissorsLizardSpock
             Console.WriteLine("The winner is:");
         }
 
-        public bool GetUserInput(string message, string ValidationType)
+        public string GetUserInput(string message, string ValidationType)
         {
             Console.WriteLine(message);
-            Console.WriteLine(Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'");
-
-
-
-
 
             switch (ValidationType)
             {
                 case "int":
-                    //return ValidInt(int.Parse(Console.ReadLine()));
+                    //return ValidInt(int.Parse(Console.ReadLine()));  
+                    string tempInt = Console.ReadLine();
+                    if (ValidInt(tempInt))
+                    {
+                        return tempInt;
+                    }
+                    else
+                    {
+                        GetUserInput(message, "int");
+                        return "";
+                    }
+                case "bool":
+                    Console.WriteLine(Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'");
+                    string tempBool = Console.ReadLine();
+                    if (ValidBool(tempBool))
+                    {
+                        return tempBool;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                case "str":
                     try
                     {
-                        string tempString = Console.ReadLine();
+                        string tempStr = Console.ReadLine();
+                        if (ValidStr(tempStr))
+                        {
+                            return tempStr;
+                        }
+                        else
+                        {
+                            return "";
+                        }
                     }
-                    catch (NullReferenceException e)
+                    catch (NullReferenceException)
                     {
-                        GetUserInput(message, "string");
+                        return "";
                     }
-                    return ValidInt(Console.ReadLine());
-                case "bool":
-                    return ValidBool(Console.ReadLine());
-                case "str":
-                    return ValidStr(Console.ReadLine());
+                    //return ValidStr(Console.ReadLine());
                 default:
-                    return false;
+                    return "";
             }
         }
 
@@ -170,6 +189,33 @@ namespace PaperRockScissorsLizardSpock
                         tempResult = false;
                         break;
                     }
+                }
+            }
+            return tempResult;
+        }
+
+        public void BeginGame()
+        {
+            //one 'game' instance should have at least 3 rounds
+            //loop at least 3 rounds
+            do
+            {
+                //game stuff
+            } while (!WinningScoreExists());
+        }
+
+        public bool WinningScoreExists()
+        {
+            bool tempResult = false;
+            for (int i = 0; i < Players.Count; i++)
+            {
+                if (Players[i].Score == 2)
+                {
+                    tempResult = true;
+                }
+                else
+                {
+                    tempResult = false;
                 }
             }
             return tempResult;

@@ -14,18 +14,21 @@ namespace PaperRockScissorsLizardSpock
             this.Name = SetPlayerName();
         }
 
-
-        public override void SelectGesture()
-        {
-            SelectedGesture = 3;
-        }
-
         public override string SetPlayerName()
         {
-            List<string> CpuPlayersList = new List<string>() {"Bender", "T-100", "HAL-9000", "OMM-0000", "ED-209" };
+            List<string> CpuPlayersList = new List<string>() { "Bender", "T-100", "HAL-9000", "OMM-0000", "ED-209" };
             Random random = new Random();
 
             return CpuPlayersList[random.Next(0, CpuPlayersList.Count)];
+        }
+
+        public override void SelectGesture()
+        {
+            //prompt for the player's selected gesture
+            //assign selected gesture input to Player.SelectedGesture
+            //loop through the players, add their selects to an array
+            //pass the array to Gestures.CompareGestures
+            SelectedGesture = 3;
         }
     }
 }
