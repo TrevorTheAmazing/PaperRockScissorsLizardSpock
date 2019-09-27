@@ -11,10 +11,10 @@ namespace PaperRockScissorsLizardSpock
         //mem var
         public List<Player> Players = new List<Player>();
         public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };
-        public Random rng;
         public bool GameIsSetUp;
         int requiredNumberOfPlayers = 2;
         Player tempPlayer;
+        int tieCounter = 0;
 
         //constr
 
@@ -87,7 +87,20 @@ namespace PaperRockScissorsLizardSpock
 
         public void AnnounceWinner()
         {
-            Console.WriteLine("The winner is:");
+            Console.WriteLine("The champ is:");
+            Console.WriteLine("");
+            Console.ReadLine();
+            for (int i = 0; i < Players.Count; i++)
+            {
+                if (Players[i].Score == 2)
+                {
+                    Console.WriteLine(Players[i].Name + "!");
+                    Console.WriteLine("");
+                    Console.WriteLine(Players[i].Name + " is the dang champ!!!!!!!!");
+                    //Console.ReadLine();
+                    break;
+                }
+            }
         }
 
         public string GetUserInput(string message, string ValidationType)
@@ -199,6 +212,7 @@ namespace PaperRockScissorsLizardSpock
             //one 'game' instance should have at least 3 rounds            
             do
             {
+                //Console.Clear();
                 //display the gesture options
                 for (int j = 0; j < GesturesList.Count; j++)
                 {
@@ -208,17 +222,59 @@ namespace PaperRockScissorsLizardSpock
                 //prompt each player for their throw
                 for (int i = 0; i < Players.Count; i++)
                 {
-                    Console.WriteLine("Player " + i + ", it is your turn to throw down!");
+                    Console.WriteLine(Players[i].Name + ", it is your turn to throw down!");
                     //prompt the player for their selection                        
                     Players[i].SelectGesture(GesturesList);
                 }
 
-                //compare their selections
-                //determine the round winner
+                //compare their selections, determine the round winner, increment their score
+                CompareSelectedGestures(Players, GesturesList);
+                
                 //Player roundWinner = 
                 //increment the winner's score
 
             } while (!WinningScoreExists());
+
+        }
+
+        public void CompareSelectedGestures(List<Player> Players, List<string> GesturesList)
+        {
+            Player Player1 = Players[0];
+            Player Player2 = Players[1];
+
+            int tempDescision = ((GesturesList.Count + (Player1.SelectedGesture - Player2.SelectedGesture)) % GesturesList.Count);
+
+            if (tempDescision==0)
+            {
+                tieCounter++;
+            }
+            else if ((tempDescision % 2) == 1)
+            {
+                Console.WriteLine(Player1.Name + " wins the round!");
+                Player1.Score++;
+                Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
+                Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
+                Console.WriteLine(tieCounter);
+                Console.ReadLine();
+            }
+            else if ((tempDescision % 2) == 0)
+            {
+                Console.WriteLine(Player2.Name + " wins the round!");
+                Player2.Score++;
+                Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
+                Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
+                Console.WriteLine(tieCounter);
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("3rr0r");
+            }
+
+            //Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
+            //Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
+            //Console.WriteLine(tieCounter);
+            //Console.ReadLine();
         }
 
         public bool WinningScoreExists()
@@ -229,6 +285,7 @@ namespace PaperRockScissorsLizardSpock
                 if (Players[i].Score == 2)
                 {
                     tempResult = true;
+                    break;
                 }
                 else
                 {
