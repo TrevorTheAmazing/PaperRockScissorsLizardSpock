@@ -24,6 +24,13 @@ namespace PaperRockScissorsLizardSpock.ClassFiles
         //{
         //    Console.WriteLine("now in DisplayGestures");
         //}
-    }
 
+        //public int CompareGestures(g1, g2)
+        //{
+        //    Let d = (n + a - b) % n.Then:
+        //      If d = 0 => tie
+        //      If d % 2 = 1 => a wins
+        //      If d % 2 = 0 => b wins
+        //}
+    }
 }

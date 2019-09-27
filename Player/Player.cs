@@ -30,6 +30,8 @@ namespace PaperRockScissorsLizardSpock
         //{
             //prompt for the player's selected gesture
             //assign selected gesture input to Player.SelectedGesture
+            //loop through the players, add their selects to an array
+            //pass the array to Gestures.CompareGestures
         //}
     }
 }

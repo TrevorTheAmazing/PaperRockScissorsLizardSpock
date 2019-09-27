@@ -23,29 +23,29 @@ namespace PaperRockScissorsLizardSpock
         {
             //display the rules
             DisplayRules();
-
-            for (var i = 0; i <= 1; i++)
-            {
-                //bool TempIsHuman;
-                Console.WriteLine("Setting up player " + (i+1).ToString() + ".");
-
-                if (GetUserInput("Is this player a human?" + Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'", "bool"))
+            if (GetUserInput("Would you like to play?", "bool"))
                 {
-                    //TempIsHuman = true;
-                    //Player1 = SetupHumanPlayer();
-                    Player1 = new Human();
-                    Players.Add(Player1);
+                for (var i = 0; i <= 1; i++)
+                {
+                    //bool TempIsHuman;
+                    Console.WriteLine("Setting up player " + (i + 1).ToString() + ".");
+
+                    if (GetUserInput("Is this player a human?", "bool"))
+                    {
+                        Player1 = new Human();
+                        Players.Add(Player1);
+                    }
+                    else
+                    {
+                        Player2 = new Computer();
+                        Players.Add(Player2);
+                    }
                 }
-                else
-                {
-                //TempIsHuman = false;
-                //Player2 = SetupComputerPlayer();
-                Player2 = new Computer();
-                Players.Add(Player2);
-                }                          
             }
 
-            //report "ready to play"
+
+
+            //indicate game is "ready to play"
             if (Players.Count == 2)
             {
                 GameIsSetUp = true;
@@ -95,10 +95,24 @@ namespace PaperRockScissorsLizardSpock
         public bool GetUserInput(string message, string ValidationType)
         {
             Console.WriteLine(message);
+            Console.WriteLine(Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'");
+
+
+
+
+
             switch (ValidationType)
             {
                 case "int":
                     //return ValidInt(int.Parse(Console.ReadLine()));
+                    try
+                    {
+                        string tempString = Console.ReadLine();
+                    }
+                    catch (NullReferenceException e)
+                    {
+                        GetUserInput(message, "string");
+                    }
                     return ValidInt(Console.ReadLine());
                 case "bool":
                     return ValidBool(Console.ReadLine());

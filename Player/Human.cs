@@ -9,7 +9,7 @@ namespace PaperRockScissorsLizardSpock
 
     class Human : Player
     {
-        public Human(/*string Name*/)// : base(Name)
+        public Human()
         {
             //this.Name = Name;
             this.Name = SetPlayerName();

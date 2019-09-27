@@ -22,7 +22,7 @@ namespace PaperRockScissorsLizardSpock
 
         public override string SetPlayerName()
         {
-            List<string> CpuPlayersList = new List<string>() { "T-100", "HAL-3000", "OMM-0000", "ED-209" };
+            List<string> CpuPlayersList = new List<string>() {"Bender", "T-100", "HAL-9000", "OMM-0000", "ED-209" };
             Random random = new Random();
 
             return CpuPlayersList[random.Next(0, CpuPlayersList.Count)];

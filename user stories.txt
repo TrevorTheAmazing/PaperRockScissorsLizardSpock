@@ -8,6 +8,7 @@ IN PROGRESS - (10 points): As a developer, I want to store all of the gesture op
 IN PROGRESS - (5 points): As a developer, I want to account for and handle bad user input, ensuring that any user input is validated and reobtained if necessary.* 
 -need to 'reobtain'
 -maybe overload getuserinput to optionally take a third string VARIABLE (value? reference?) to get the actual user input back?
+IN PROGRESS - check for null strings
 
 (10 points): As a player, I want the correct player to win a given round based on the choices* made by each player. 
 (10 points): As a player, I want the game of RPSLS to be at minimum a ‘best of three’ to decide a winner.
@@ -27,4 +28,6 @@ Paper disproves Spock
 Spock vaporizes Rock 
 
 https://www.youtube.com/watch?v=cSLeBKT7-sM
+
+
 
