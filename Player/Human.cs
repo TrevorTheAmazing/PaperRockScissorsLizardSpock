@@ -29,8 +29,6 @@ namespace PaperRockScissorsLizardSpock
                 if (!string.IsNullOrEmpty(Input))
                 {
                     Input = Input.ToLower();
-                    //for (int i = 0; i < Input.Length; i++)
-                    //{
                     foreach (char asciiChar in Input.ToCharArray())
                     {
                         if(!(asciiChar > 32 && asciiChar < 127))
@@ -45,8 +43,6 @@ namespace PaperRockScissorsLizardSpock
                         nameIsSet = true;
                         return nameIsSet;
                     }
-
-                    //}
                 }
                 return tempResult;
             }//end ValidStr
@@ -58,8 +54,7 @@ namespace PaperRockScissorsLizardSpock
                 nameIsSet = false;
                 Console.WriteLine("What is this human player's name?");
                 tempStr = Console.ReadLine();
-                ValidStr(tempStr);
-                
+                ValidStr(tempStr);                
             } while (!nameIsSet);
             
             return tempStr;

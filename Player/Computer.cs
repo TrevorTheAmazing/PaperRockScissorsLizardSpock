@@ -25,8 +25,6 @@ namespace PaperRockScissorsLizardSpock
         public override void SelectGesture(List<string> GesturesList)
         {
             Random random = new Random();
-            //prompt for the player's selected gesture
-            //assign selected gesture input to Player.SelectedGesture
             this.SelectedGesture = (random.Next(0, GesturesList.Count));           
         }
     }

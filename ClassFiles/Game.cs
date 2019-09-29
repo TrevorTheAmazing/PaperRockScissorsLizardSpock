@@ -9,8 +9,7 @@ namespace PaperRockScissorsLizardSpock
     class Game
     {
         //mem var
-        public List<Player> Players = new List<Player>();
-        //public List<string> GesturesList = new List<string>() { "Paper", "Rock", "Scissors", "Lizard", "Spock" };       
+        public List<Player> Players = new List<Player>();   
         public List<string> GesturesList = new List<string>() { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
         public bool GameIsSetUp;
         int requiredNumberOfPlayers = 2;
@@ -22,32 +21,38 @@ namespace PaperRockScissorsLizardSpock
         //mem methods
         public bool SetupGame()
         {
-            
+
             //display the rules
+            Console.Clear();
             DisplayRules();
             if (GetUserInput("Would you like to play?", "bool")=="1")
                 {
-                while (Players.Count < requiredNumberOfPlayers)
+                do
                 {
-                    //string tempPlayer = "";
-                    if (GetUserInput("Is this player a human?", "bool")=="1")
+                    if (GetUserInput("Is this player a human?", "bool") == "1")
                     {
-                        tempPlayer = new Human();                        
+                        tempPlayer = new Human();
                     }
                     else
                     {
                         tempPlayer = new Computer();
+                        Console.WriteLine("Your opponent is: " + tempPlayer.Name);
+                        Console.ReadLine();
                     }
-                    Players.Add(tempPlayer);
-                }
+
+                    if (tempPlayer != null)
+                    {
+                        Players.Add(tempPlayer);
+                    }
+                } while (Players.Count < requiredNumberOfPlayers);
             }
             else
             {
-                RunGame();
+                SetupGame();
             }
 
             //indicate game is "ready to play"
-            if (Players.Count == 2)
+            if (Players.Count == requiredNumberOfPlayers)
             {
                 GameIsSetUp = true;
                 return true;
@@ -55,8 +60,7 @@ namespace PaperRockScissorsLizardSpock
             else
             {
                 return false;
-            }
-            
+            }            
         }
 
         public void RunGame()
@@ -66,9 +70,16 @@ namespace PaperRockScissorsLizardSpock
                 Console.WriteLine("Player " + (i+1).ToString() + " = " + Players[i].Name);
             }
 
-            BeginGame();
+            if (GameIsSetUp)
+                {
+                BeginGame();
+                AnnounceWinner();
+                }
+            else
+            {
+                Players.Clear();
+            }
 
-            AnnounceWinner();
         }
         
         public void DisplayRules()
@@ -94,8 +105,8 @@ namespace PaperRockScissorsLizardSpock
                 {
                     Console.WriteLine(Players[i].Name + "!");
                     Console.WriteLine("");
-                    Console.WriteLine(Players[i].Name + " is the dang champ!!!!!!!!");
-                    //Console.ReadLine();
+                    Console.WriteLine(Players[i].Name + " is the champ!!!");
+                    Console.ReadLine();
                     break;
                 }
             }
@@ -103,54 +114,63 @@ namespace PaperRockScissorsLizardSpock
 
         public string GetUserInput(string message, string ValidationType)
         {
-            Console.WriteLine(message);
-
-            switch (ValidationType)
+            bool inputIsValid = false;
+            do
             {
-                case "int":
-                    //return ValidInt(int.Parse(Console.ReadLine()));  
-                    string tempInt = Console.ReadLine();
-                    if (ValidInt(tempInt))
-                    {
-                        return tempInt;
-                    }
-                    else
-                    {
-                        GetUserInput(message, "int");
-                        return "";
-                    }
-                case "bool":
-                    Console.WriteLine(Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'");
-                    string tempBool = Console.ReadLine();
-                    if (ValidBool(tempBool))
-                    {
-                        return tempBool;
-                    }
-                    else
-                    {
-                        return "";
-                    }
-                case "str":
-                    try
-                    {
-                        string tempStr = Console.ReadLine();
-                        if (ValidStr(tempStr))
+                Console.WriteLine(message);
+
+                switch (ValidationType)
+                {
+                    case "int":
+                        string tempInt = Console.ReadLine();
+                        if (ValidInt(tempInt))
                         {
-                            return tempStr;
+                            inputIsValid = true;
+                            return tempInt;
                         }
                         else
                         {
+                            GetUserInput(message, "int");
                             return "";
                         }
-                    }
-                    catch (NullReferenceException)
-                    {
-                        return "";
-                    }
+                    case "bool":
+                        Console.WriteLine(Environment.NewLine + "1 = 'Yes'" + Environment.NewLine + "0 = 'No'");
+                        string tempBool = Console.ReadLine();
+                        if (ValidBool(tempBool))
+                        {
+                            inputIsValid = true;
+                            return tempBool;
+                        }
+                        else
+                        {
+                            GetUserInput(message, "bool");
+                            return "";
+                        }
+                    case "str":
+                        try
+                        {
+                            string tempStr = Console.ReadLine();
+                            if (ValidStr(tempStr))
+                            {
+                                inputIsValid = true;
+                                return tempStr;
+                            }
+                            else
+                            {
+                                GetUserInput(message, "str");
+                                return "";
+                            }
+                        }
+                        catch (NullReferenceException)
+                        {
+                            GetUserInput(message, "str");
+                            return "";
+                        }
                     //return ValidStr(Console.ReadLine());
-                default:
-                    return "";
-            }
+                    default:
+                        return "";
+                }
+            } while (!inputIsValid);
         }
 
         public bool ValidStr(string Input)
@@ -207,29 +227,33 @@ namespace PaperRockScissorsLizardSpock
 
         public void BeginGame()
         {
+            tieCounter = 0;
             //one 'game' instance should have at least 3 rounds            
             do
             {
-                //Console.Clear();
+                Console.Clear();
+                DisplayRules();
+
                 //display the gesture options
                 for (int j = 0; j < GesturesList.Count; j++)
                 {
                     Console.WriteLine(j + " - " + GesturesList[j]);
                 }
 
+                Console.WriteLine("");
+                Console.WriteLine("It is time to throw down!");
+                Console.WriteLine("");
+
                 //prompt each player for their throw
                 for (int i = 0; i < Players.Count; i++)
                 {
-                    Console.WriteLine(Players[i].Name + ", it is your turn to throw down!");
+                    Console.WriteLine("");
                     //prompt the player for their selection                        
                     Players[i].SelectGesture(GesturesList);
                 }
 
                 //compare their selections, determine the round winner, increment their score
                 CompareSelectedGestures(Players, GesturesList);
-                
-                //Player roundWinner = 
-                //increment the winner's score
 
             } while (!WinningScoreExists());
 
@@ -240,46 +264,38 @@ namespace PaperRockScissorsLizardSpock
             Player Player1 = Players[0];
             Player Player2 = Players[1];
 
-            int tempDescision = ((GesturesList.Count + Player1.SelectedGesture - Player2.SelectedGesture) % GesturesList.Count);
+            int tempDescision = (((GesturesList.Count + Player1.SelectedGesture) - Player2.SelectedGesture) % GesturesList.Count);
 
-            if (tempDescision==0)
+            Console.WriteLine();
+            Console.WriteLine(Player1.Name + " selected " + GesturesList[Player1.SelectedGesture] + ".");
+            Console.WriteLine(Player2.Name + " selected " + GesturesList[Player2.SelectedGesture] + ".");
+            Console.WriteLine();
+
+            if (tempDescision == 0)
             {
                 tieCounter++;
+                Console.WriteLine("Tie! (" + tieCounter + ")");
             }
             else if ((tempDescision % 2) == 1)
             {
-                Console.Clear();
-                DisplayRules();
-                Console.WriteLine(Player1.Name + " wins the round!");
-                Console.WriteLine();
                 Player1.Score++;
-                Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
-                Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
-                Console.WriteLine(tieCounter);
+                Console.WriteLine(Player1.Name + " wins the round!");
                 Console.ReadLine();
             }
             else if ((tempDescision % 2) == 0)
             {
-                Console.Clear();
-                DisplayRules();
-                Console.WriteLine(Player2.Name + " wins the round!");
-                Console.WriteLine();
                 Player2.Score++;
-                Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
-                Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
-                Console.WriteLine(tieCounter);
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("3rr0r");
+                Console.WriteLine(Player2.Name + " wins the round!");
                 Console.ReadLine();
             }
 
-            //Console.WriteLine(Player1.Name + " chose " + GesturesList[Player1.SelectedGesture]);
-            //Console.WriteLine(Player2.Name + " chose " + GesturesList[Player2.SelectedGesture]);
-            //Console.WriteLine(tieCounter);
-            //Console.ReadLine();
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("3rr0r");
+            }
+
+
         }
 
         public bool WinningScoreExists()
