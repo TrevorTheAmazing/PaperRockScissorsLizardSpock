@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassFiles\Gestures.cs" />
-    <Compile Include="Player\Computer.cs" />
-    <Compile Include="Player\Human.cs" />
-    <Compile Include="Player\Player.cs" />
+    <Compile Include="ClassFiles\Player\Computer.cs" />
+    <Compile Include="ClassFiles\Player\Human.cs" />
+    <Compile Include="ClassFiles\Player\Player.cs" />
     <Compile Include="ClassFiles\Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

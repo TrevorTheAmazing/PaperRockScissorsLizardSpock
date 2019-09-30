@@ -47,7 +47,6 @@ namespace PaperRockScissorsLizardSpock
                 return tempResult;
             }//end ValidStr
 
-
             //begin Human.SetPlayerName()
             do
             {
@@ -61,8 +60,7 @@ namespace PaperRockScissorsLizardSpock
         }//end Human.SetPlayerName()
 
         public override void SelectGesture(List<string> GesturesList)
-        {
-            
+        {            
             bool ValidInt(string Input)
             {
                 bool tempResult = true;
@@ -91,7 +89,6 @@ namespace PaperRockScissorsLizardSpock
                     {
                         SelectGesture(GesturesList);
                     }
-
                 }
                 return tempResult;
             }
@@ -114,8 +111,7 @@ namespace PaperRockScissorsLizardSpock
                 catch
                 {
                     SelectGesture(GesturesList);
-                }
-                
+                }                
             }
             else
             {
